@@ -15,8 +15,8 @@ export default function ScoreGauge({ score }: Props) {
   }, [score]);
   
   return (
-    <div className="relative w-36 h-36 flex-shrink-0">
-      <svg className="w-full h-100%" viewBox="0 0 120 120">
+    <div className="score-gauge relative w-36 h-36 flex-shrink-0">
+      <svg className="score-gauge-ring w-full h-full" viewBox="0 0 120 120" aria-hidden="true">
         <circle cx="60" cy="60" r="54" fill="none" stroke="#e5e7eb" strokeWidth="8" />
         <circle
           cx="60" cy="60" r="54" fill="none"
@@ -28,9 +28,9 @@ export default function ScoreGauge({ score }: Props) {
           transform="rotate(-90 60 60)"
         />
       </svg>
-      <div className="absolute inset-0 flex flex-col items-center justify-center">
-        <span className="text-4xl font-bold" style={{ color: color.text }}>{score}</span>
-        <span className="text-sm text-gray-400">/100</span>
+      <div className="score-gauge-label absolute inset-0 flex flex-col items-center justify-center">
+        <span className="score-gauge-value text-4xl font-bold" style={{ color: color.text }}>{score}</span>
+        <span className="score-gauge-total text-sm text-gray-400">/100</span>
       </div>
     </div>
   );

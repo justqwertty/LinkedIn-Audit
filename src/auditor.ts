@@ -330,7 +330,8 @@ function generateHeadlineSuggestions(profile: ParsedProfile): string[] {
 }
 
 function generateAboutOutline(profile: ParsedProfile): string {
-  const direction = profile.headline || 'your target role';
+  const headlineWithoutEmail = profile.headline.replace(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/gi, '').trim();
+  const direction = headlineWithoutEmail || 'your target role';
   const skills = profile.skills.slice(0, 2);
   const goal = skills[0] ? `a specific learning goal in ${skills[0]}` : 'a specific learning goal';
   return `Open with the career direction you selected for this audit (${direction}). Connect two or three listed skills to work already described on the profile (${skills.join(', ')}). Close with ${goal}.`;
